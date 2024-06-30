@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = StoriesAPI_Test
+build_property.ProjectDir = F:\Projects\StoriesApp\API\StoriesAPI\StoriesAPI_Test\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
