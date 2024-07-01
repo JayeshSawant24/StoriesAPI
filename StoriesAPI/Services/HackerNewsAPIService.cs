@@ -16,8 +16,6 @@ namespace StoriesAPI.Services
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
         string mainUri;
-        //string uri = "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty";
-        //string storyUri = string.Format("https://hacker-news.firebaseio.com/v0/item/{0}.json?print=pretty",);
         public HackerNewsAPIService(HttpClient httpClient, IConfiguration configuration) 
         { 
             _httpClient = httpClient;
@@ -26,7 +24,10 @@ namespace StoriesAPI.Services
         }
 
 
-
+        /// <summary>
+        /// GetStoriesIdsList() call the external api endpoint and fetches the storiesIds
+        /// </summary>
+        /// <returns>List of StoryIds</returns>
         public async Task<List<int>> GetStoriesIdsList()
         {
             var storiesIdsResponse = await _httpClient.GetAsync($"{mainUri}newstories.json?print=pretty");
@@ -39,6 +40,11 @@ namespace StoriesAPI.Services
             return storiesIdsList;
         }
 
+        /// <summary>
+        /// GetStoryById(int storyId) call the external api and fetches the story response using the storyId
+        /// </summary>
+        /// <param name="storyId"></param>
+        /// <returns>Returns a story object</returns>
         public async Task<Story> GetStoryById(int storyId)
         {
             var storyUri = $"{mainUri}item/{storyId}.json?print=pretty";
@@ -53,40 +59,5 @@ namespace StoriesAPI.Services
 
 
         }
-
-
-        //public async Task<StoryListViewModel> GetStories(int pageNumber, int pageSize)
-        //{
-        //    //var storiesIdsResponse = await _httpClient.GetAsync($"{mainUri}newstories.json?print=pretty");
-
-        //    //storiesIdsResponse.EnsureSuccessStatusCode();
-
-        //    //var storiesIdsString = await storiesIdsResponse.Content.ReadAsStringAsync();
-
-        //    //var storiesIdsList = JsonSerializer.Deserialize<List<int>>(storiesIdsString);
-
-        //    var storiesIdsList = await GetStoriesIdsList();
-
-        //    StoryListViewModel storyListViewModel = new StoryListViewModel();
-        //    storyListViewModel.TotalStories = storiesIdsList.Count;
-
-
-        //    List<Story> storiesList = new List<Story>();
-        //    var filteredList = storiesIdsList.Skip((pageNumber * pageSize) - pageSize).Take(pageSize).ToList();
-
-        //    foreach(var storyId in filteredList)
-        //    {
-        //        //var storyResponse = await _httpClient.GetAsync($"{mainUri}item/{storyId}.json?print=pretty");
-        //        //var storyString = await storyResponse.Content.ReadAsStringAsync();
-        //        //Story story = JsonSerializer.Deserialize<Story>(storyString);
-        //        Story story = await GetStoryById(storyId);
-        //        storiesList.Add(story);
-        //    }
-
-        //    storyListViewModel.StoriesList = storiesList;
-
-        //    return storyListViewModel;
-        //}
-
     }
 }

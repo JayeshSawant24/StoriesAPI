@@ -28,3 +28,4 @@ F:\Projects\StoriesApp\API\StoriesAPI\StoriesAPI\obj\Debug\netcoreapp3.1\Stories
 F:\Projects\StoriesApp\API\StoriesAPI\StoriesAPI\obj\Debug\netcoreapp3.1\StoriesAPI.dll
 F:\Projects\StoriesApp\API\StoriesAPI\StoriesAPI\obj\Debug\netcoreapp3.1\StoriesAPI.pdb
 F:\Projects\StoriesApp\API\StoriesAPI\StoriesAPI\obj\Debug\netcoreapp3.1\StoriesAPI.genruntimeconfig.cache
+F:\Projects\StoriesApp\API\StoriesAPI\StoriesAPI\obj\Debug\netcoreapp3.1\StoriesAPI.sourcelink.json

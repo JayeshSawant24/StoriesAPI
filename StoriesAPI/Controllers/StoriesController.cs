@@ -18,6 +18,13 @@ namespace StoriesAPI.Controllers
             _storiesService = storiesService;   
         }
 
+        /// <summary>
+        /// GetAllStories will return a list of stories by taking the input as pageNumber and pageSize
+        /// Also it will cache the response for 2 minutes
+        /// </summary>
+        /// <param name="pageNumber"></param>
+        /// <param name="pageSize"></param>
+        /// <returns>Returns StoryListVIewodel which will contain the List of stoires and the total stories count</returns>
         [HttpGet]
         [Route("getallstories/{pageNumber}/{pageSize}")]
         [ResponseCache(Duration=120, Location=ResponseCacheLocation.Any, NoStore=false)]
@@ -34,22 +41,5 @@ namespace StoriesAPI.Controllers
                 return BadRequest(ex.ToString());  
             }
         }
-
-        //[HttpGet]
-        //[Route("getstorybyid/{id}")]
-        //public async Task<ActionResult<Story>> GetStoryById(int id)
-        //{
-        //    try
-        //    {
-        //        var response = await _storiesService.GetStoryById(id);
-        //        return Ok(response);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.ToString());
-        //        return BadRequest(ex.ToString());
-        //    }
-        //}
-
     }
 }

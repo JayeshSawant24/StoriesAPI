@@ -11,12 +11,18 @@ namespace StoriesAPI.Services
 {
     public class StoriesService : IStoriesService
     {
-        //private readonly HttpClient _httpClient;
         private readonly IHackerNewsAPIService _hackerNewsAPIService;
         public StoriesService(IHackerNewsAPIService hackerNewsAPIService)
         {
             _hackerNewsAPIService = hackerNewsAPIService;
         }
+
+        /// <summary>
+        /// GetStories will return Viewodel containing a list of stories by taking the input as pageNumber and pageSize
+        /// </summary>
+        /// <param name="pageNumber"></param>
+        /// <param name="pageSize"></param>
+        /// <returns>Returns StoryListVIewodel which will contain the List of stoires and the total stories count</returns>
         public async Task<StoryListViewModel> GetStories(int pageNumber, int pageSize)
         {
             var storiesIdsList = await _hackerNewsAPIService.GetStoriesIdsList();
@@ -42,20 +48,5 @@ namespace StoriesAPI.Services
 
             return storyListViewModel;
         }
-
-        //public async Task<Story> GetStoryById(int id)
-        //{
-        //    var storyUri = mainUri + "item/" + id + "json?print=pretty";
-        //    var storyResponse = await _httpClient.GetAsync(storyUri);
-
-        //    storyResponse.EnsureSuccessStatusCode();
-        //    var storyString = await storyResponse.Content.ReadAsStringAsync();
-
-        //    var story = JsonSerializer.Deserialize<Story>(storyString);
-
-        //    return story;
-
-
-        //}
     }
 }
